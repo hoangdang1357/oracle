@@ -51,7 +51,7 @@ CREATE TABLE ACADEMIC_RESULTS (
     AverageScore_Semester1 NUMBER(1) NOT NULL,
     AverageScore_Semester2 NUMBER(5) NOT NULL,
     FinalAverageScore NVARCHAR2(30) NOT NULL,
-    Conduct NVARCHAR2(10) NOT NULL,
+    Conduct NVARCHAR2(10) NOT NULL check (Conduct IN ('Excellent', 'Good', 'Average')),
     AcademicPerformance NVARCHAR2(10) NOT NULL,
     PromotionStatus NVARCHAR2(1) CHECK (PromotionStatus IN ('Y', 'N')),
     FOREIGN KEY (PupilID) REFERENCES PUPIL(PupilID)
