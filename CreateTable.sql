@@ -44,8 +44,8 @@ CREATE TABLE PUPIL_REWARDS (
     AwardTitle NVARCHAR2(30) NOT NULL,
     FOREIGN KEY (BoardID) REFERENCES SCHOOL_BOARD(BoardID),
     FOREIGN KEY (PupilID) REFERENCES PUPIL(PupilID),
-    CONSTRAINT chk_BoardID CHECK (BoardID LIKE 'B___'), 
-    CONSTRAINT chk_PupilID CHECK (PupilID LIKE 'P_____') 
+    CONSTRAINT chk_PR_BoardID CHECK (BoardID LIKE 'B___'), 
+    CONSTRAINT chk_PR_PupilID CHECK (PupilID LIKE 'P_____') 
 );
 
 
@@ -61,8 +61,8 @@ CREATE TABLE ACADEMIC_RESULTS (
     FOREIGN KEY (PupilID) REFERENCES PUPIL(PupilID),
     CONSTRAINT chk_PromotionStatus CHECK (PromotionStatus IN ('Y', 'N')),
     CONSTRAINT chk_Conduct CHECK (Conduct IN ('Excellent', 'Good', 'Average', 'Poor')),
-    CONSTRAINT chk_ResultID CHECK (ResultID LIKE 'R___'),
-    CONSTRAINT chk_PupilID CHECK (PupilID LIKE 'P_____')
+    CONSTRAINT chk_AR_ResultID CHECK (ResultID LIKE 'R___'),
+    CONSTRAINT chk_AR_PupilID CHECK (PupilID LIKE 'P_____')
 );
 
 
