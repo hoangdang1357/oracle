@@ -1,4 +1,48 @@
-CREATE TABLE PUPIL (
+CREATE TABLE TEACHER ( --6
+    TeacherID NVARCHAR2(5) PRIMARY KEY,
+    TeacherName NVARCHAR2(30),
+    Address NVARCHAR2(90),
+    Specialization CHAR(2),
+    CONSTRAINT chk_TeacherID CHECK (TeacherID LIKE 'T___'),
+    CONSTRAINT chk_Specialization CHECK (Specialization IN ('Sc', 'So'))
+);
+
+
+CREATE TABLE CLASSES ( --7
+    ClassID NVARCHAR2(5) PRIMARY KEY ,
+    ClassName NVARCHAR2(30),
+    ClassSize NUMBER(3),
+    CONSTRAINT chk_CL_ClassID CHECK (ClassID LIKE 'C___')
+);
+
+
+CREATE TABLE TEACHING_ASSIGNMENT ( --8
+    TeacherID NVARCHAR2(5) PRIMARY KEY,
+    SubjectID CHAR(5),
+    ClassID CHAR(5),
+    CONSTRAINT chk_TA_TeacherID CHECK (TeacherID LIKE 'T___')
+);
+
+CREATE TABLE SCHOOL_BOARD ( --2
+    BoardID NVARCHAR2(5) PRIMARY KEY,
+    BoardName NVARCHAR2(30) NOT NULL,
+    School_Position CHAR(50) NOT NULL,
+    CONSTRAINT chk_BoardID CHECK (BoardID LIKE 'B___')
+);
+
+CREATE TABLE TEACHER_REWARDS ( --3
+    BoardID NVARCHAR2(5) NOT NULL,
+    TeacherID NVARCHAR2(5) NOT NULL,
+    Semester NUMBER(1) NOT NULL,
+    SchoolYear NUMBER(5) NOT NULL,
+    FOREIGN KEY (BoardID) REFERENCES SCHOOL_BOARD(BoardID),
+    FOREIGN KEY (TeacherID) REFERENCES TEACHER(TeacherID),
+    CONSTRAINT chk_TR_TeacherID CHECK (TeacherID LIKE 'T___'),
+    CONSTRAINT chk_TR_BoardID CHECK (BoardID LIKE 'B___')
+);
+
+
+CREATE TABLE PUPIL ( --1
     PupilID NVARCHAR2(9) PRIMARY KEY,
     PupilName NVARCHAR2(30) NOT NULL,
     ClassID NVARCHAR2(5) NOT NULL,
@@ -17,26 +61,10 @@ CREATE TABLE PUPIL (
     CONSTRAINT chk_PupilID CHECK (PupilID LIKE 'P_____')
 );
 
-CREATE TABLE SCHOOL_BOARD (
-    BoardID NVARCHAR2(5) PRIMARY KEY,
-    BoardName NVARCHAR2(30) NOT NULL,
-    School_Position CHAR(50) NOT NULL,
-    CONSTRAINT chk_BoardID CHECK (BoardID LIKE 'B___')
-);
-
-CREATE TABLE TEACHER_REWARDS (
-    BoardID NVARCHAR2(5) NOT NULL,
-    TeacherID NVARCHAR2(5) NOT NULL,
-    Semester NUMBER(1) NOT NULL,
-    SchoolYear NUMBER(5) NOT NULL,
-    FOREIGN KEY (BoardID) REFERENCES SCHOOL_BOARD(BoardID),
-    FOREIGN KEY (TeacherID) REFERENCES TEACHER(TeacherID),
-    CONSTRAINT chk_TR_TeacherID CHECK (TeacherID LIKE 'T___'),
-    CONSTRAINT chk_TR_BoardID CHECK (BoardID LIKE 'B___')
-);
 
 
-CREATE TABLE PUPIL_REWARDS (
+
+CREATE TABLE PUPIL_REWARDS ( --4
     BoardID NVARCHAR2(5) NOT NULL,
     PupilID NVARCHAR2(9) NOT NULL,
     Semester NUMBER(1) NOT NULL,
@@ -49,7 +77,7 @@ CREATE TABLE PUPIL_REWARDS (
 );
 
 
-CREATE TABLE ACADEMIC_RESULTS (
+CREATE TABLE ACADEMIC_RESULTS ( --5
     ResultID NVARCHAR2(9) PRIMARY KEY ,
     PupilID NVARCHAR2(9),
     AverageScore_Semester1 NUMBER(1) NOT NULL,
@@ -66,27 +94,4 @@ CREATE TABLE ACADEMIC_RESULTS (
 );
 
 
-CREATE TABLE TEACHER (
-    TeacherID NVARCHAR2(5) PRIMARY KEY,
-    TeacherName NVARCHAR2(30),
-    Address NVARCHAR2(90),
-    Specialization CHAR(2),
-    CONSTRAINT chk_TeacherID CHECK (TeacherID LIKE 'T___'),
-    CONSTRAINT chk_Specialization CHECK (Specialization IN ('Sc', 'So'))
-);
 
-
-CREATE TABLE CLASSES (
-    ClassID NVARCHAR2(5) PRIMARY KEY ,
-    ClassName NVARCHAR2(30),
-    ClassSize NUMBER(3),
-    CONSTRAINT chk_CL_ClassID CHECK (ClassID LIKE 'C___')
-);
-
-
-CREATE TABLE TEACHING_ASSIGNMENT (
-    TeacherID NVARCHAR2(5) PRIMARY KEY,
-    SubjectID CHAR(5),
-    ClassID CHAR(5),
-    CONSTRAINT chk_TA_TeacherID CHECK (TeacherID LIKE 'T___')
-);
