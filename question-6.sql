@@ -10,7 +10,7 @@ CREATE INDEX idx_AR_PromotionStatus on ACADEMIC_RESULTS(PromotionStatus)
 CREATE INDEX idx_AR_Conduct ON ACADEMIC_RESULTS (Conduct);
 
 //4
-CREATE INDEX idx_AR_AcademicPerformance ON ACADEMIC_RESULTS (AcademicPerformance);
+-- CREATE INDEX idx_AR_AcademicPerformance ON ACADEMIC_RESULTS (AcademicPerformance);
 CREATE INDEX idx_P_ClassID ON PUPIL (ClassID);
 
 //5
