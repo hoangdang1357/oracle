@@ -4,7 +4,7 @@
 BEGIN
 
    INSERT INTO PUPIL (PupilID, PupilName, ClassID, DateOfBirth, Gender, Ethnicity, MotherName, MotherOccupation, FatherName, FatherOccupation, PhoneNumber, Hometown, Religion, PupilCardID)
-   VALUES ('P00007', 'Tr?n V?n H', 'C001', TO_DATE('01-01-2012', 'DD-MM-YYYY'), 'Nam', 'Kinh', 'Tr?n Th? A', 'Bác s?', 'Tr?n V?n B', 'K? s?', '0971234567', 'Hà N?i', 'Không', 'PC0000007');
+   VALUES ('P00007', 'Tr?n V?n H', 'C001', TO_DATE('01-01-2012', 'DD-MM-YYYY'), 'Nam', 'Kinh', 'Tr?n Th? A', 'BÃ¡c s?', 'Tr?n V?n B', 'K? s?', '0971234567', 'HÃ  N?i', 'KhÃ´ng', 'PC0000007');
    
 
    SAVEPOINT sp1;
